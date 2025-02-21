@@ -1,0 +1,5 @@
+{
+    "*.ts": ["prettier --list-different", "eslint --fix"],
+    "*.json": "prettier --list-different",
+    "*.md": "prettier --list-different"
+}
