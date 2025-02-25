@@ -1,7 +1,7 @@
-import mysql from 'mysql2/promise';
+import mysql, { ConnectionOptions } from 'mysql2/promise';
 import { BD_PORT, DATABASE, HOST, PASSWORD, USER } from '../globals';
 
-const config = {
+const config: ConnectionOptions = {
     host: HOST,
     user: USER,
     port: BD_PORT,
@@ -9,4 +9,7 @@ const config = {
     database: DATABASE,
 };
 
-export const getConnection = async () => await mysql.createConnection(config);
+export const getConnection = async (): Promise<mysql.Connection> => {
+    const connection = await mysql.createConnection(config);
+    return connection;
+};

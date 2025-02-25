@@ -1,49 +1,23 @@
 import { getConnection } from '../config/db';
-import bcrypt from 'bcrypt';
-import Jwt from 'jsonwebtoken';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 
 export class AuthModel {
-    static async login(document, password) {
-        let connection;
-        try {
-            connection = await getConnection();
-            const [rows] = await connection.execute('SELECT * FROM users WHERE dni = ?', [document]);
-            const [user] = rows;
+    static async login(document: string) {
+        const connection = await getConnection();
+        const query = 'SELECT * FROM users WHERE dni = ?';
+        const [queryResult] = await connection.execute<RowDataPacket[]>(query, [document]);
+        const [user] = queryResult;
+        connection.end();
 
-            if (user && (await bcrypt.compare(password, user.password_hash))) {
-                const token = Jwt.sign({ user }, 'secret-key', {
-                    expiresIn: '1h',
-                });
-                return token;
-            }
-
-            return null;
-        } catch (error) {
-            throw new Error(error);
-        } finally {
-            if (connection) {
-                await connection.end();
-            }
-        }
+        return user;
     }
 
-    static async updatePassword(document, password) {
-        let connection;
-        try {
-            connection = await getConnection();
-            const passwordHash = await bcrypt.hash(password, 10);
-            const [result] = await connection.execute('UPDATE users SET password_hash = ? WHERE dni = ?', [
-                passwordHash,
-                document,
-            ]);
-            const affectedRows = result.affectedRows;
-            return affectedRows > 0;
-        } catch (error) {
-            throw new Error(error);
-        } finally {
-            if (connection) {
-                await connection.end();
-            }
-        }
+    static async updatePassword(document: string, passwordHash: string) {
+        const connection = await getConnection();
+        const query = 'UPDATE users SET password_hash = ? WHERE dni = ?';
+        const [result] = await connection.execute<ResultSetHeader>(query, [passwordHash, document]);
+        connection.end();
+
+        return result;
     }
 }

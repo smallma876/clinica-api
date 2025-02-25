@@ -2,6 +2,10 @@
     "compilerOptions": {
         "outDir": "./build",
         "rootDir": "./src",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "strict": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "strictFunctionTypes": true
     }
 }
