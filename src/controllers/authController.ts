@@ -18,7 +18,7 @@ export class AuthController {
                 return;
             }
 
-            res.cookie('auth_token13', generateToken(user), {
+            res.cookie('Authorization', `Bearer ${generateToken(user)}`, {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
             });
