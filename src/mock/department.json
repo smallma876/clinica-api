@@ -1,0 +1,114 @@
+{
+    "auditResponse": {
+        "idTransaccion": "647ee198-9f81-4197-a1ba-8a4fd1ba9774",
+        "serviceName": "cinternacional-ch-ubigeo",
+        "methodName": "util/consultardepartamento",
+        "date": "2025-03-18T22:24:59.064-05:00",
+        "responseCode": "0",
+        "responseMessage": "Operación Exitosa"
+    },
+    "bodyResponse": {
+        "departments": [
+            {
+                "id": "01",
+                "name": "Amazonas"
+            },
+            {
+                "id": "02",
+                "name": "Áncash"
+            },
+            {
+                "id": "03",
+                "name": "Apurímac"
+            },
+            {
+                "id": "04",
+                "name": "Arequipa"
+            },
+            {
+                "id": "05",
+                "name": "Ayacucho"
+            },
+            {
+                "id": "06",
+                "name": "Cajamarca"
+            },
+            {
+                "id": "07",
+                "name": "Cusco"
+            },
+            {
+                "id": "08",
+                "name": "Huancavelica"
+            },
+            {
+                "id": "09",
+                "name": "Huánuco"
+            },
+            {
+                "id": "10",
+                "name": "Ica"
+            },
+            {
+                "id": "11",
+                "name": "Junín"
+            },
+            {
+                "id": "12",
+                "name": "La Libertad"
+            },
+            {
+                "id": "13",
+                "name": "Lambayeque"
+            },
+            {
+                "id": "14",
+                "name": "Lima"
+            },
+            {
+                "id": "15",
+                "name": "Loreto"
+            },
+            {
+                "id": "16",
+                "name": "Madre de Dios"
+            },
+            {
+                "id": "17",
+                "name": "Moquegua"
+            },
+            {
+                "id": "18",
+                "name": "Pasco"
+            },
+            {
+                "id": "19",
+                "name": "Piura"
+            },
+            {
+                "id": "20",
+                "name": "Puno"
+            },
+            {
+                "id": "21",
+                "name": "San Martín"
+            },
+            {
+                "id": "22",
+                "name": "Tacna"
+            },
+            {
+                "id": "23",
+                "name": "Tumbes"
+            },
+            {
+                "id": "24",
+                "name": "Callao"
+            },
+            {
+                "id": "25",
+                "name": "Ucayali"
+            }
+        ]
+    }
+}

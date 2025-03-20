@@ -1,0 +1,24 @@
+{
+    "auditResponse": {
+        "idTransaction": "647ee198-9f81-4197-a1ba-8a4fd1ba9774",
+        "serviceName": "cinternacional-ch-reniec",
+        "methodName": "reniecValidate",
+        "date": "2024-11-24T03:49:09.590196-05:00[America/Lima]",
+        "responseCode": "0",
+        "responseMessage": "ok"
+    },
+    "bodyResponse": {
+        "documentNumber": "47804267",
+        "names": "LUIS ENRIQUE",
+        "lastname": "MALLMA",
+        "lastname2": "CHAVEZ",
+        "address": "JR. RIO RIMAC MZ. B LT. 5 COOP. MARISCAL LUZURIAGA",
+        "gender": "1",
+        "birthDate": "15/04/1991",
+        "maritalStatusCode": "2",
+        "maritalStatusDesc": "Casado",
+        "departmentName": "14",
+        "provinceName": "",
+        "districtName": "37"
+    }
+}
