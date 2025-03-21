@@ -1,9 +1,10 @@
 import { getConnection } from '../config/db';
 import { ResultSetHeader, RowDataPacket } from 'mysql2';
-import { User } from '../domain/user';
+import { User } from '../domain/User';
+import { UserModel } from '../domain/UserModel';
 
-export class AuthModel {
-    static async login(document: string): Promise<User> {
+export class UserMYSQLModel implements UserModel {
+    login = async (document: string): Promise<User> => {
         const connection = await getConnection();
         const query = 'SELECT * FROM users WHERE dni = ?';
         const [queryResult] = await connection.execute<RowDataPacket[]>(query, [document]);
@@ -11,14 +12,14 @@ export class AuthModel {
         connection.end();
 
         return user as User;
-    }
+    };
 
-    static async updatePassword(document: string, passwordHash: string) {
+    updatePassword = async (document: string, passwordHash: string): Promise<ResultSetHeader> => {
         const connection = await getConnection();
         const query = 'UPDATE users SET password_hash = ? WHERE dni = ?';
         const [result] = await connection.execute<ResultSetHeader>(query, [passwordHash, document]);
         connection.end();
 
         return result;
-    }
+    };
 }

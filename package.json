@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build:ci": "tsc",
-        "start": "nodemon",
+        "start:mysql": "nodemon --exec ts-node --files src/server-with-mysql",
         "prettier": "prettier --write .",
         "lint:fix": "eslint --fix .",
         "prepare": "husky",

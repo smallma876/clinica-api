@@ -1,9 +1,17 @@
 import { Router } from 'express';
-import { PatientController } from '../controllers/patientController';
 import { verifyToken } from '../middleware/verify-token.middleware';
+import { PatientModel } from '../domain/PatientModel';
+import { PatientController } from '../controllers/patientController';
 
-const router = Router();
+const createPatientRoutes = (patientModel: PatientModel) => {
+    const router = Router();
 
-router.get('/cli-api/patient', verifyToken, PatientController.getPatient);
+    const patientController = new PatientController(patientModel);
 
-export default router;
+    router.get('/patient', verifyToken, patientController.getPatient);
+    router.get('/patient/:id', patientController.getPatientByDocument);
+
+    return router;
+};
+
+export default createPatientRoutes;

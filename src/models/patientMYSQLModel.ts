@@ -1,13 +1,16 @@
 import { RowDataPacket } from 'mysql2';
 import { getConnection } from '../config/db';
+import { PatientModel } from '../domain/PatientModel';
+import { Patient } from '../domain/Patient';
 
-export class PatientModel {
-    static async getPatientByDocument(id: string) {
+export class PatientMYSQLModel implements PatientModel {
+    getPatientByDocument = async (id: string): Promise<Patient> => {
         const connection = await getConnection();
         const query = 'SELECT * FROM patients WHERE document_number = ?';
         const [queryResult] = await connection.execute<RowDataPacket[]>(query, [id]);
         const [user] = queryResult;
         connection.end();
-        return user;
-    }
+
+        return user as Patient;
+    };
 }

@@ -1,13 +1,19 @@
 import { Request, Response } from 'express';
-import { AuthModel } from '../models/authModel';
 import { generateToken } from '../utils/authUtils';
+import { UserModel } from '../domain/UserModel';
 import bcrypt from 'bcrypt';
 
-export class AuthController {
-    static async login(req: Request, res: Response): Promise<void> {
+export class UserController {
+    authModel: UserModel;
+
+    constructor(authModel: UserModel) {
+        this.authModel = authModel;
+    }
+
+    login = async (req: Request, res: Response): Promise<void> => {
         const { document, password } = req.body;
         try {
-            const user = await AuthModel.login(document);
+            const user = await this.authModel.login(document);
             if (!user) {
                 res.status(404).json({ message: 'user not founded' });
                 return;
@@ -26,13 +32,13 @@ export class AuthController {
         } catch (error) {
             res.status(500).json(error);
         }
-    }
+    };
 
-    static async updatePassword(req: Request, res: Response) {
+    updatePassword = async (req: Request, res: Response) => {
         try {
             const { document, password } = req.body;
             const passwordHash = await bcrypt.hash(password, 10);
-            const result = await AuthModel.updatePassword(document, passwordHash);
+            const result = await this.authModel.updatePassword(document, passwordHash);
             const isUpdated = result.affectedRows > 0;
             if (isUpdated) {
                 res.status(200).json({ message: 'Password updated' });
@@ -42,5 +48,5 @@ export class AuthController {
         } catch (error) {
             res.status(500).json(error);
         }
-    }
+    };
 }
