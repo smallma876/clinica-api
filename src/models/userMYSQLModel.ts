@@ -22,4 +22,8 @@ export class UserMYSQLModel implements UserModel {
 
         return result;
     };
+
+    register = async (user: User): Promise<User> => {
+        return user;
+    };
 }

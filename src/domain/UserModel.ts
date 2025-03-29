@@ -4,4 +4,5 @@ import { User } from './User';
 export interface UserModel {
     login(document: string): Promise<User>;
     updatePassword(document: string, passwordHash: string): Promise<ResultSetHeader>;
+    register(user: User): Promise<User>;
 }

@@ -13,4 +13,8 @@ export class PatientMYSQLModel implements PatientModel {
 
         return user as Patient;
     };
+
+    registerPatient = async (patient: Patient): Promise<Patient> => {
+        return patient;
+    };
 }
