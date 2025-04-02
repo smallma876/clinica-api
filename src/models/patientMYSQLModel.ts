@@ -16,6 +16,7 @@ export class PatientMYSQLModel implements PatientModel {
 
     registerPatient = async (patient: PatientRequest): Promise<void> => {
         const connection = await getConnection();
+
         try {
             const {
                 documentType,
@@ -58,8 +59,8 @@ export class PatientMYSQLModel implements PatientModel {
                     gender,
                     domicileStreet,
                     'patient',
-                    termsAndConditionFlag,
-                    promotionsFlag,
+                    'profile_picture_url',
+                    '1',
                 ]
             );
 
@@ -71,7 +72,7 @@ export class PatientMYSQLModel implements PatientModel {
                  is_portal_user, is_cuidate, terms_and_condition_flag, 
                  promotions_flag, favorites_medicals, investigations) 
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-                [userId, null, null, null, null, null, true, true, null, null]
+                [userId, null, null, null, null, null, termsAndConditionFlag, promotionsFlag, null, null]
             );
 
             await connection.commit();
