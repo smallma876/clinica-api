@@ -49,4 +49,12 @@ export class UserController {
             res.status(500).json(error);
         }
     };
+
+    register = async (req: Request, res: Response) => {
+        try {
+            /* to be implemented */
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    };
 }

@@ -1,5 +1,5 @@
 import { getConnection } from '../config/db';
-import { ResultSetHeader, RowDataPacket } from 'mysql2';
+import { QueryResult, ResultSetHeader, RowDataPacket } from 'mysql2';
 import { User } from '../domain/User';
 import { UserModel } from '../domain/UserModel';
 
@@ -23,7 +23,39 @@ export class UserMYSQLModel implements UserModel {
         return result;
     };
 
-    register = async (user: User): Promise<User> => {
-        return user;
+    register = async (user: User): Promise<QueryResult> => {
+        const {
+            dni,
+            name,
+            last_name,
+            last_name2,
+            email,
+            phone,
+            mobile_phone,
+            password_hash,
+            role,
+            profile_picture_url,
+            created_at,
+            specialty_id,
+        } = user;
+        const connection = await getConnection();
+        const userQuery =
+            'INSERT INTO users (dni, name, last_name, last_name2, email, phone, mobile_phone, password_hash, role, profile_picture_url, created_at, specialty_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+        const [result] = await connection.query<QueryResult>(userQuery, [
+            dni,
+            name,
+            last_name,
+            last_name2,
+            email,
+            phone,
+            mobile_phone,
+            password_hash,
+            role,
+            profile_picture_url,
+            created_at,
+            specialty_id,
+        ]);
+
+        return result;
     };
 }

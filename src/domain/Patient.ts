@@ -1,3 +1,5 @@
+import { UserRequest } from './User';
+
 export interface Patient {
     user_id: number;
     document_type: string;
@@ -17,4 +19,16 @@ export interface Patient {
     promotions_flag: string;
     favorites_medicals: string;
     investigations: number;
+}
+
+export interface PatientRequest extends UserRequest {
+    clinicHistoryHis6: string | null;
+    clinicHistoryHis5: string | null;
+    clientCodeHis6: string | null;
+    isPortalUser: string | null;
+    isCuidate: string | null;
+    termsAndConditionFlag: boolean;
+    promotionsFlag: boolean;
+    favoritesMedicals: string | null;
+    investigations: string | null;
 }

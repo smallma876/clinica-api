@@ -13,3 +13,22 @@ export interface User {
     created_at: string;
     specialty_id: string | null;
 }
+
+export interface UserRequest {
+    documentNumber: string;
+    documentType: string;
+    name: string;
+    lastName: string;
+    lastName2: string;
+    email: string;
+    phone: string;
+    mobilePhone: string;
+    password: string;
+    maritalStatus: string;
+    birthdate: string;
+    gender: string;
+    domicileStreet: string;
+    role: string;
+    profilePictureUrl: string | null;
+    specialtyId: string | null;
+}

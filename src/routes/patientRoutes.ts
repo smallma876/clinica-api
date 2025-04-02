@@ -10,6 +10,7 @@ const createPatientRoutes = (patientModel: PatientModel) => {
 
     router.get('/patient', verifyToken, patientController.getPatient);
     router.get('/patient/:id', patientController.getPatientByDocument);
+    router.post('/patient/register', patientController.registerPatient);
 
     return router;
 };

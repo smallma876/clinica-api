@@ -27,4 +27,16 @@ export class PatientController {
             res.status(500).json(error);
         }
     };
+
+    registerPatient = async (req: Request, res: Response) => {
+        try {
+            const patientRequest = req.body;
+
+            const result = await this.patientModel.registerPatient(patientRequest);
+
+            res.status(200).json(result);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    };
 }
