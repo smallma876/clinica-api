@@ -6,7 +6,7 @@ import { Patient, PatientRequest } from '../domain/Patient';
 export class PatientMYSQLModel implements PatientModel {
     getPatientByDocument = async (id: string): Promise<Patient> => {
         const connection = await getConnection();
-        const query = 'SELECT * FROM patients WHERE document_number = ?';
+        const query = 'SELECT * FROM users join patients WHERE document_number = ?';
         const [queryResult] = await connection.execute<RowDataPacket[]>(query, [id]);
         const [user] = queryResult;
         connection.end();

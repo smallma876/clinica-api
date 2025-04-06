@@ -6,6 +6,7 @@ import createPatientRoutes from './routes/patientRoutes';
 import { PatientModel } from './domain/PatientModel';
 import 'dotenv/config';
 import createUserRoutes from './routes/userRoutes';
+import { handlerError } from './middleware/error-handler';
 
 interface CreateAppProps {
     userModel: UserModel;
@@ -20,6 +21,8 @@ export const createApp = ({ userModel, patientModel }: CreateAppProps) => {
 
     app.use('/cli-api', createPatientRoutes(patientModel));
     app.use('/cli-api', createUserRoutes(userModel));
+
+    app.use(handlerError);
 
     const PORT = process.env.PORT;
     app.listen(PORT, () => {});
