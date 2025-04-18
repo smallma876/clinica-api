@@ -1,6 +1,6 @@
 import { getConnection } from '../config/db';
 import { QueryResult, ResultSetHeader, RowDataPacket } from 'mysql2';
-import { User, UserRequest } from '../domain/User';
+import { User, UserRequest } from '../domain/user';
 import { UserModel } from '../domain/UserModel';
 
 export class UserMYSQLModel implements UserModel {
