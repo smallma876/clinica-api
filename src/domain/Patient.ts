@@ -1,4 +1,4 @@
-import { UserRequest } from './User';
+import { UserRequest } from './user';
 
 export interface Patient {
     user_id: number;
