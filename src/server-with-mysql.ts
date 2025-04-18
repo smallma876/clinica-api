@@ -1,6 +1,6 @@
 import { createApp } from './app';
 import { PatientMYSQLModel } from './models/patientMYSQLModel';
-import { UserMYSQLModel } from './models/UserMYSQLModel';
+import { UserMYSQLModel } from './models/userMYSQLModel';
 
 const userMYSQLModel = new UserMYSQLModel();
 const patientMYSQLModel = new PatientMYSQLModel();
