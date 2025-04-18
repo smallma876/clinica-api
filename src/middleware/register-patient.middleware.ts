@@ -27,9 +27,6 @@ export const registerPatientValidate = (req: Request, res: Response, next: NextF
 
         next();
     } catch (error) {
-        res.status(400).json({
-            success: false,
-            error: error,
-        });
+        next(error);
     }
 };
