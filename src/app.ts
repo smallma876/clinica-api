@@ -16,7 +16,12 @@ interface CreateAppProps {
 
 export const createApp = ({ userModel, patientModel }: CreateAppProps) => {
     const app = express();
-    app.use(cors());
+    app.use(
+        cors({
+            origin: 'http://localhost:5173', // Cambia por el dominio real de tu frontend
+            credentials: true,
+        })
+    );
     app.use(express.json());
     app.use(cookieParser());
 

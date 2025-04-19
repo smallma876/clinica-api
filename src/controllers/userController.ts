@@ -24,9 +24,10 @@ export class UserController {
                 return;
             }
 
-            res.cookie('Authorization', `Bearer ${generateToken(user)}`, {
+            res.cookie('Authorization', generateToken(user), {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
+                sameSite: 'none',
             });
             res.status(200).json({ message: 'Login successfull' });
         } catch (error) {
